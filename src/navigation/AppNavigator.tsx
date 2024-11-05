@@ -6,17 +6,9 @@ import HomeScreen from '../screens/HomeScreen';
 import PerfilScreen from '../screens/PerfilScreen';
 import HistoricoScreen from '../screens/HistoricoScreen';
 
-type RootStackParamList = {
-  Cadastro: undefined;
-  Login: undefined;
-  Home: undefined;
-  Perfil: undefined;
-  Historico: undefined;
-};
+const Stack = createStackNavigator();
 
-const Stack = createStackNavigator<RootStackParamList>();
-
-const AppNavigator: React.FC = () => {
+const AppNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="Login">
       <Stack.Screen name="Cadastro" component={CadastroScreen} />
