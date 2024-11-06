@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, TextInput, Button} from 'react-native';
-import { VStack, Input, Text, Image, useNativeBase } from 'native-base';
+import { View, TextInput, } from 'react-native';
+import { VStack, Input, Text, Image, useNativeBase, HStack, Button, Box} from 'native-base';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../navigation/types';
 
@@ -17,14 +17,18 @@ const LoginScreen: React.FC = () => {
 
 
   return (
-    <VStack space={4} padding={5} alignItems="center">
-      <Image source={{ uri: '../components/img/jovens-loginScreen.jpg' }} alt="Logo" size="xl" />
-      <Text fontSize="2xl" bold>Oralytics</Text>
-      <Input placeholder="Email" />
-      <Input placeholder="Senha" type="password" />
-      <Button title="Primeiro acesso?" onPress={handleCadastro} />
-      <Button title="Acessar" onPress={handleLogin}/>
-    </VStack>
+    <Box flex={1} bg="blue.600">
+      <VStack space={4} alignItems="center" width="100%">
+        <Image source={require('../components/img/jovens-loginScreen.jpg')} alt="img" size="100%" />
+        <Text fontSize="3xl" bold color="white">Oralytics</Text>
+        <Input width={"85%"} placeholder="Email"/>
+        <Input width={"85%"} placeholder="Senha" type="password"/>
+        <HStack space={2} padding={2}>
+          <Button onPress={handleCadastro} borderRadius={8} bg="white" _text={{ bold: true, color: "black" }}>Primeiro Acesso?</Button>
+          <Button onPress={handleLogin} borderRadius={8} bg="white" _text={{ bold: true, color: "black" }}>Acessar</Button>
+        </HStack>
+      </VStack>
+    </Box>
   );
 };
 
