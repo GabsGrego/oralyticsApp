@@ -1,14 +1,46 @@
 import React from 'react';
-import { VStack, Text, Avatar, Button } from 'native-base';
+import { VStack, Text, Avatar, Button, ScrollView, HStack, Icon, Center } from 'native-base';
+import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '../navigation/types';
 
 const PerfilScreen: React.FC = () => {
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
+  const handleSair = () => {
+    navigation.navigate('Login'); // direciona para a tela de login
+  }
+  
   return (
-    <VStack space={4} padding={5} alignItems="center">
-      <Avatar size="2xl" source={{ uri: 'https://example.com/profile.png' }} />
-      <Text fontSize="xl" bold>Thais Araujo Nascimento</Text>
-      <Button>Atualização de dados</Button>
-      <Button>Alterar Senha</Button>
+    <ScrollView>
+    
+    <VStack space={4} padding={2} alignItems="center" bg="blue.600">
+
+      <Text fontSize={'3xl'} bold color={'white'}> Oralytics </Text>
+      <HStack padding={1} space={2} bg={'white'} alignItems={"center"} maxWidth={"100%"} borderRadius={3}>
+        <Avatar size="xl" borderWidth={"2"} borderColor={'blue.400'} source={require('../components/img/fotoPerfil.jpeg')} />
+        <VStack flex={1} maxWidth={"70%"}>
+          <Text fontSize="md" bold >Ana Julia de Oliveira Moreira</Text>
+          <Text fontSize="sm" bold>Plano: Bem Estar</Text>
+          <HStack>
+            <Icon as={MaterialIcons} name="credit-card" size="md" color="#F59E8B" />
+            <Text> 0267513890 </Text>
+          </HStack>
+          
+        </VStack>
+      </HStack>
     </VStack>
+
+      <VStack padding={'0.5'} space={0.5}>
+      <Button w={'100%'}>Atualização de dados</Button>
+      <Button w={'100%'}>Alterar Senha</Button>
+      <Button w={'100%'}>Carteirinha</Button>
+      <Button w={'100%'}>Guia de escovação</Button>
+      <Button w={'100%'}>FAQ - Perguntas e Respostas</Button>
+      <Button w={'100%'}>Sobre o Aplicativo</Button>
+      <Button onPress={handleSair} w={'100%'}>Sair</Button>
+    </VStack>
+    </ScrollView>
   );
 };
 
