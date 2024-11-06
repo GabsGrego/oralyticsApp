@@ -8,11 +8,11 @@ const LoginScreen: React.FC = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const handleLogin = () => {
-    console.log('Login efetuado com sucesso');
+    navigation.navigate('Home'); // direciona para a tela principal
   };
 
   const handleCadastro = () => {
-    navigation.navigate('Cadastro'); // direciona para a tela e cadastro
+    navigation.navigate('Cadastro'); // direciona para a tela de cadastro
   };
 
 

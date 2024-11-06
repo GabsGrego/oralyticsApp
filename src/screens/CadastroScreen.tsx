@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button} from 'react-native';
-import { VStack, Input, Text } from 'native-base';
+//import { Button} from 'react-native';
+import { VStack, Input, Text, Button } from 'native-base';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../navigation/types';
 
@@ -18,9 +18,9 @@ const CadastroScreen: React.FC = () => {
       <Input placeholder="Email" />
       <Input placeholder="Data de Nascimento" />
       <Text>Beneficiário Odontoprev?</Text>
-      <Button title="Sim"/>
-      <Button title="Não"/>
-      <Button title="Cadastrar" onPress={handleCadastrado}/>
+      <Button> Sim </Button>
+      <Button> Não </Button>
+      <Button onPress={handleCadastrado}> Cadastrar</Button>
     </VStack>
   );
 };
