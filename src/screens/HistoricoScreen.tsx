@@ -20,7 +20,7 @@ const HistoricoScreen: React.FC = () => {
         <Text>Tratamento de canal - Dra. Leticia Lima</Text>
       </Box>
       <Box padding={2} borderBottomWidth={1} borderColor="gray.200" bg="#F59E8B" shadow={3} >
-        <Text bold>15/09/2024 - 08:08</Text>
+        <Text bold>15/09/2021 - 08:08</Text>
         <Text>Limpeza e raspagem - Dr. Erwin Covaliuc</Text>
       </Box>
     </VStack>
