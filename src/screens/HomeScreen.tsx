@@ -40,7 +40,7 @@ const HomeScreen: React.FC = () => {
               onPress={() => console.log("Notificações")}
             />
             <IconButton
-              icon={<FontAwesome name="user-circle" size={30} color="white" />}
+              icon={<FontAwesome name="user" size={30} color="white" />}
               onPress={handlePerfil}
             />
           </HStack>
