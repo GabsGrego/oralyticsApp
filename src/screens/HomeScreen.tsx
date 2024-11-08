@@ -1,11 +1,52 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { VStack, Box, Text, HStack, Button, IconButton, Center, ScrollView, Pressable, Image } from 'native-base';
 import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../navigation/types';
+import AsyncStorage from '@react-native-community/async-storage';
+
 
 const HomeScreen: React.FC = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  //--------------------------------------------------------------------------------------------- Em processo de Implementação
+  const [userName, setUserName] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        // Obtém o token armazenado no AsyncStorage
+        const token = await AsyncStorage.getItem('token');
+
+        // Verifica se o token existe
+        if (!token) {
+          console.error("Token não encontrado");
+          return;
+        }
+
+        // Realiza a requisição para obter os dados do usuário
+        const response = await fetch('http://localhost:3000/api/users/:id', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        });
+
+        if (response.ok) {
+          const userData = await response.json();
+          setUserName(userData.name); // Define o nome do usuário no estado
+        } else {
+          console.error("Erro ao buscar dados do usuário:", response.status);
+        }
+      } catch (error) {
+        console.error("Erro ao buscar dados do usuário:", error);
+      }
+    };
+
+    fetchUserData(); // Chama a função para buscar os dados do usuário
+  }, []);
+  
+// ------------------------------------------------------------------------------------------------------------------------
 
   const handlePerfil = () => {
     navigation.navigate('Perfil'); // direciona para a tela principal
@@ -32,7 +73,7 @@ const HomeScreen: React.FC = () => {
         <HStack justifyContent="space-between" width="100%">
           <VStack >
             <Text color="white" fontSize="lg" bold>Bem vindo,</Text>
-            <Text color="white" fontSize="2xl" bold>Ana Júlia</Text>
+            <Text color="white" fontSize="2xl" bold>{userName}</Text>
           </VStack>
           <HStack >
             <IconButton

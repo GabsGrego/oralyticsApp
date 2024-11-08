@@ -1,6 +1,5 @@
 import React from 'react';
 import { VStack, Text, Box } from 'native-base';
-import { View, TextInput, Button} from 'react-native';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../navigation/types';
 

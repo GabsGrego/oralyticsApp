@@ -1,12 +1,9 @@
 import React, { useState, useRef } from 'react';
-import { View, TextInput, } from 'react-native';
-import { VStack, Input, Text, Image, useNativeBase, HStack, Button, Box, AlertDialog, Icon} from 'native-base';
-import { MaterialIcons, MaterialCommunityIcons, FontAwesome } from '@expo/vector-icons';
+import { VStack, Input, Text, Image, HStack, Button, Box, AlertDialog, Icon} from 'native-base';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../navigation/types';
 import AsyncStorage from '@react-native-community/async-storage';
-import { red } from 'react-native-reanimated/lib/typescript/Colors';
-import { color } from 'native-base/lib/typescript/theme/styled-system';
 
 const LoginScreen: React.FC = () => {
   const [email, setEmail] = useState(''); 
@@ -23,10 +20,7 @@ const LoginScreen: React.FC = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          email, // Envie o username
-          password, // Envie a password
-        }),
+        body: JSON.stringify({email, password}),
       });
 
       if (!response.ok) {
@@ -36,7 +30,7 @@ const LoginScreen: React.FC = () => {
       const { token } = await response.json();
       await AsyncStorage.setItem('token', token); // Armazena o token no AsyncStorage
       setError(null); // Limpa qualquer erro
-      navigation.navigate('Home'); // Navega para a tela de tarefas
+      navigation.navigate('Home'); // Navega para a tela principal
     } catch (error) {
       setError('Erro de autenticação. Email ou senha incorretos.');
       setIsAlertOpen(true); // Exibe o pop-up em caso de erro

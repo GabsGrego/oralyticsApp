@@ -1,6 +1,6 @@
 import React from 'react';
-import { VStack, Text, Avatar, Button, ScrollView, HStack, Icon, Center } from 'native-base';
-import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
+import { VStack, Text, Avatar, Button, ScrollView, HStack, Icon } from 'native-base';
+import { MaterialIcons } from '@expo/vector-icons';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../navigation/types';
 
