@@ -7,6 +7,18 @@ import { RootStackParamList } from '../navigation/types';
 const PerfilScreen: React.FC = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
+  const handleGuia = () => {
+    navigation.navigate('Guia'); // direciona para a tela Guia
+  }
+
+  const handleFaq = () => {
+    navigation.navigate('Faq'); // direciona para a tela Faq
+  }
+
+  const handleSobre = () => {
+    navigation.navigate('Sobre'); // direciona para a tela Sobre
+  }
+
   const handleSair = () => {
     navigation.navigate('Login'); // direciona para a tela de login
   }
@@ -34,10 +46,9 @@ const PerfilScreen: React.FC = () => {
       <VStack padding={'0.5'} space={0.5}>
       <Button w={'100%'}>Atualização de dados</Button>
       <Button w={'100%'}>Alterar Senha</Button>
-      <Button w={'100%'}>Carteirinha</Button>
-      <Button w={'100%'}>Guia de escovação</Button>
-      <Button w={'100%'}>FAQ - Perguntas e Respostas</Button>
-      <Button w={'100%'}>Sobre o Aplicativo</Button>
+      <Button onPress={handleGuia} w={'100%'}>Guia de escovação</Button>
+      <Button onPress={handleFaq} w={'100%'}>FAQ - Perguntas e Respostas</Button>
+      <Button onPress={handleSobre} w={'100%'}>Sobre o Aplicativo</Button>
       <Button onPress={handleSair} w={'100%'}>Sair</Button>
     </VStack>
     </ScrollView>
