@@ -73,7 +73,7 @@ const HomeScreen: React.FC = () => {
         <HStack justifyContent="space-between" width="100%">
           <VStack >
             <Text color="white" fontSize="lg" bold>Bem vindo,</Text>
-            <Text color="white" fontSize="2xl" bold>{userName}</Text>
+            <Text color="white" fontSize="2xl" bold>Ana Júlia</Text>
           </VStack>
           <HStack >
             <IconButton
