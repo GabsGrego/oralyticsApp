@@ -130,25 +130,6 @@ const HomeScreen: React.FC = () => {
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-<<<<<<< HEAD
-    <VStack flex={1} bg="white">
-
-      <Box bg="blue.600" padding={4} width="100%" alignItems="center">
-        <HStack justifyContent="space-between" width="100%">
-          <VStack >
-            <Text color="white" fontSize="lg" bold>Bem vindo,</Text>
-            <Text color="white" fontSize="2xl" bold>Ana Júlia</Text>
-          </VStack>
-          <HStack >
-            <IconButton
-              icon={<MaterialIcons name="notifications" size={30} color="white" />}
-              onPress={() => console.log("Notificações")}
-            />
-            <IconButton
-              icon={<FontAwesome name="user" size={30} color="white" />}
-              onPress={handlePerfil}
-            />
-=======
       <VStack flex={1} bg="white">
         <Box bg="blue.600" padding={4} width="100%" alignItems="center">
           <HStack justifyContent="space-between" width="100%">
@@ -172,7 +153,6 @@ const HomeScreen: React.FC = () => {
                 onPress={handlePerfil}
               />
             </HStack>
->>>>>>> cf1a4f22de4dfa5ca1a3516a28808007142e2eba
           </HStack>
         </Box>
 
