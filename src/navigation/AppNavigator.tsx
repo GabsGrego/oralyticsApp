@@ -8,12 +8,13 @@ import HistoricoScreen from '../screens/HistoricoScreen';
 import SobreScreen from '../screens/SobreScreen';
 import FaqScreen from '../screens/FaqScreen';
 import GuiaScreen from '../screens/GuiaScreen';
+import AvaliacaoScreen from '../screens/AvaliacaoScreen';
 
 const Stack = createStackNavigator();
 
 const AppNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="Login">
+    <Stack.Navigator initialRouteName="Avaliacao">
       <Stack.Screen name="Cadastro" component={CadastroScreen} />
       <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }}/>
       <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>
@@ -22,6 +23,7 @@ const AppNavigator = () => {
       <Stack.Screen name="Sobre" component={SobreScreen} />
       <Stack.Screen name="Faq" component={FaqScreen} />
       <Stack.Screen name="Guia" component={GuiaScreen} />
+      <Stack.Screen name="Avaliacao" component={AvaliacaoScreen} />
     </Stack.Navigator>
   );
 };

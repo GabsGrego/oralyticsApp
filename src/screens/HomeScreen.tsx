@@ -37,7 +37,7 @@ ChartJS.register(
 
 const HomeScreen: React.FC = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
-  //--------------------------------------------------------------------------------------------- Em processo de Implementação
+  
   const [userName, setUserName] = useState<string | null>(null);
 
   useEffect(() => {
@@ -86,7 +86,7 @@ const HomeScreen: React.FC = () => {
   };
 
   const handleAvaliacao = () => {
-    console.log("Avaliação realizada com sucesso."); // a implementar
+    navigation.navigate("Avaliacao"); // a implementar
   };
 
   const [manhaSelecionado, setManhaSelecionado] = useState(false);
@@ -227,7 +227,7 @@ const HomeScreen: React.FC = () => {
               2
             </Text>
           </HStack>
-          <Box width="100%" height="200px" bg="white" padding={2}>
+          <Box width="100%" height="150px" bg="white" padding={2}>
             <Bar data={escovacaoData} options={options} />
           </Box>
 
@@ -247,14 +247,18 @@ const HomeScreen: React.FC = () => {
                 </Text>
               </Center>
             </Pressable>
-            <Box alignItems="center" width="40%">
+            <Pressable 
+              onPress={handleAvaliacao} 
+              alignItems="center" 
+              width="40%"
+            >
               <Center bg="#F59E8B" borderRadius={10} padding={4} width="100%">
                 <FontAwesome name="camera" size={40} color="black" />
                 <Text bold fontSize="md" textAlign="center">
                   Avaliação Inteligente
                 </Text>
               </Center>
-            </Box>
+            </Pressable>
           </HStack>
         </VStack>
       </VStack>

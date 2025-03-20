@@ -7,4 +7,5 @@ export type RootStackParamList = {
     Sobre: undefined;
     Faq: undefined;
     Guia: undefined;
+    Avaliacao: undefined;
 };
