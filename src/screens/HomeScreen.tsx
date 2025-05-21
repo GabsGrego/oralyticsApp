@@ -1,20 +1,9 @@
 import React, { useState, useEffect } from "react";
-import {
-  VStack,
-  Box,
-  Text,
-  HStack,
-  Button,
-  IconButton,
-  Center,
-  ScrollView,
-  Pressable,
-  Image,
-} from "native-base";
+import {VStack,Box,Text,HStack,Button,IconButton,Center,ScrollView,Pressable,Image} from "native-base";
 import { MaterialIcons, FontAwesome } from "@expo/vector-icons";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "../navigation/types";
-import AsyncStorage from "@react-native-community/async-storage";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,

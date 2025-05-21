@@ -3,7 +3,7 @@ import { VStack, Input, Text, Image, HStack, Button, Box, AlertDialog, Icon} fro
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../navigation/types';
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const LoginScreen: React.FC = () => {
   const [email, setEmail] = useState(''); 
