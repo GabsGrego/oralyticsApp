@@ -81,7 +81,7 @@ Tabela usuarios: Armazena informações dos usuários (id, name, email, dataNasc
 Este projeto está licenciado sob a licença MIT - veja o arquivo LICENSE para mais detalhes.
 
 ## Autores 👥
-- Gabriel Gregório - Desenvolvedor
+- Gabriel Grego - Desenvolvedor
 - André Alves - Desenvolvedor
 - Kayque Ferreira - Desenvolvedor
 
