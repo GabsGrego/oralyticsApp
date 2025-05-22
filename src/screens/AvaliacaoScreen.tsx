@@ -18,20 +18,24 @@ const AvaliacaoInteligenteScreen: React.FC = () => {
         navigation.goBack();
     };
 
-    const handleIniciarAvaliacao = async () => {
-        // Solicitar permissão para usar a câmera
-        const { status } = await Camera.requestCameraPermissionsAsync();
-        setHasPermission(status === 'granted');
+    // const handleIniciarAvaliacao = async () => {
+    //     // Solicitar permissão para usar a câmera
+    //     const { status } = await Camera.requestCameraPermissionsAsync();
+    //     setHasPermission(status === 'granted');
         
-        if (status === 'granted') {
-            setCameraVisible(true);
-        } else {
-            toast.show({
-                title: "Permissão negada",
-                description: "É necessário permitir o acesso à câmera para realizar a avaliação.",
-                duration: 3000,
-            });
-        }
+    //     if (status === 'granted') {
+    //         setCameraVisible(true);
+    //     } else {
+    //         toast.show({
+    //             title: "Permissão negada",
+    //             description: "É necessário permitir o acesso à câmera para realizar a avaliação.",
+    //             duration: 3000,
+    //         });
+    //     }
+    // };
+
+    const handleIniciarAvaliacao = () => {
+        navigation.navigate('Resultado');  // Navega para resultado enquanto a funcionalidade está em desenvolvimento
     };
 
     const handleTakePicture = async () => {
@@ -54,6 +58,7 @@ const AvaliacaoInteligenteScreen: React.FC = () => {
                         description: "Funcionalidade em desenvolvimento. Em breve você poderá ver os resultados da sua avaliação.",
                         duration: 4000,
                     });
+                    navigation.navigate('Resultado'); // Navega para resultado enquanto a funcionalidade está em desenvolvimento
                 }, 2000);
                 
             } catch (error) {

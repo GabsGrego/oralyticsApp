@@ -8,4 +8,5 @@ export type RootStackParamList = {
     Faq: undefined;
     Guia: undefined;
     Avaliacao: undefined;
+    Resultado: undefined;
 };

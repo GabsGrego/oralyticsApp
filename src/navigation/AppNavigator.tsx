@@ -9,6 +9,7 @@ import SobreScreen from '../screens/SobreScreen';
 import FaqScreen from '../screens/FaqScreen';
 import GuiaScreen from '../screens/GuiaScreen';
 import AvaliacaoScreen from '../screens/AvaliacaoScreen';
+import ResultadoScreen from '../screens/ResultadoScreen';
 
 const Stack = createStackNavigator();
 
@@ -24,6 +25,7 @@ const AppNavigator = () => {
       <Stack.Screen name="Faq" component={FaqScreen} />
       <Stack.Screen name="Guia" component={GuiaScreen} />
       <Stack.Screen name="Avaliacao" component={AvaliacaoScreen} />
+      <Stack.Screen name="Resultado" component={ResultadoScreen} options={{ headerShown: false }}/>
     </Stack.Navigator>
   );
 };
