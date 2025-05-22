@@ -5,15 +5,8 @@ import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "../navigation/types";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Bar } from "react-chartjs-2";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend} from "chart.js";
+import jwt_decode from "jwt-decode";
 
 ChartJS.register(
   CategoryScale,
@@ -41,8 +34,12 @@ const HomeScreen: React.FC = () => {
           return;
         }
 
+        // Decodifica o token para obter o ID do usuário
+        const decodedToken: any = jwt_decode.jwtDecode(token);
+        const userId = decodedToken.id; // Assumindo que o token contém o ID do usuário
+
         // Realiza a requisição para obter os dados do usuário
-        const response = await fetch("http://localhost:3000/api/users/:id", {
+        const response = await fetch("http://localhost:3000/api/users/${userId}", {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -55,27 +52,40 @@ const HomeScreen: React.FC = () => {
           setUserName(userData.name); // Define o nome do usuário no estado
         } else {
           console.error("Erro ao buscar dados do usuário:", response.status);
+        // Alternativa: Se a API não estiver funcionando, tente obter o nome do usuário do AsyncStorage
+          const storedUserName = await AsyncStorage.getItem("userName");
+          if (storedUserName) {
+            setUserName(storedUserName);
+          }
         }
       } catch (error) {
         console.error("Erro ao buscar dados do usuário:", error);
+      // Tenta obter o nome do usuário do AsyncStorage em caso de erro
+        try {
+          const storedUserName = await AsyncStorage.getItem("userName");
+          if (storedUserName) {
+            setUserName(storedUserName);
+          }
+        } catch (storageError) {
+          console.error("Erro ao buscar nome do usuário do AsyncStorage:", storageError);
+        }
       }
     };
-
     fetchUserData(); // Chama a função para buscar os dados do usuário
   }, []);
 
   // ------------------------------------------------------------------------------------------------------------------------
 
   const handlePerfil = () => {
-    navigation.navigate("Perfil"); // direciona para a tela principal
+    navigation.navigate("Perfil"); // direciona para a tela de perfil
   };
 
   const handleHistorico = () => {
-    navigation.navigate("Historico"); // direciona para a tela de cadastro
+    navigation.navigate("Historico"); // direciona para a tela de historico
   };
-
+  
   const handleAvaliacao = () => {
-    navigation.navigate("Avaliacao"); // a implementar
+    navigation.navigate("Avaliacao"); // direciona para a tela de avaliacao
   };
 
   const [manhaSelecionado, setManhaSelecionado] = useState(false);

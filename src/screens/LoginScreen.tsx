@@ -10,11 +10,23 @@ const LoginScreen: React.FC = () => {
   const [password, setPassword] = useState(''); 
   const [error, setError] = useState<string | null>(null);
   const [isAlertOpen, setIsAlertOpen] = useState(false); // Estado para controlar o pop-up
+  const [isLoading, setIsLoading] = useState(false); // Adicionando estado de carregamento
   const cancelRef = useRef(null);
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const handleLogin = async () => {
+    // Validação básica
+    if (!email || !password) {
+      setError('Por favor, preencha todos os campos');
+      setIsAlertOpen(true);
+      return;
+    }
+
+    setIsLoading(true); // Inicia o carregamento
+
     try {
+      console.log('Tentando login com:', { email }); // Log para debug
+
       const response = await fetch('http://localhost:3000/api/login', {
         method: 'POST',
         headers: {
@@ -23,17 +35,39 @@ const LoginScreen: React.FC = () => {
         body: JSON.stringify({email, password}),
       });
 
+      console.log('Status da resposta:', response.status); // Log para debug
+
+      const responseData = await response.json();
+      console.log('Dados da resposta:', responseData); // Log para debug
+
       if (!response.ok) {
-        throw new Error('Erro ao fazer login');
+        throw new Error(responseData.error || 'Erro ao fazer login');
       }
 
-      const { token } = await response.json();
-      await AsyncStorage.setItem('token', token); // Armazena o token no AsyncStorage
+      // Verifica se o token existe na resposta
+      if (!responseData.token) {
+        throw new Error('Token não recebido do servidor');
+      }
+
+      // Armazena o token no AsyncStorage
+      await AsyncStorage.setItem('token', responseData.token);
+      
+      // Se disponível, armazena também o nome do usuário
+      if (responseData.user && responseData.user.name) {
+        await AsyncStorage.setItem('userName', responseData.user.name);
+      }
+      
       setError(null); // Limpa qualquer erro
-      navigation.navigate('Home'); // Navega para a tela principal
+      setIsLoading(false); // Finaliza o carregamento
+      
+      // Navega para a tela principal
+      navigation.navigate('Home');
     } catch (error) {
+      console.error('Erro durante o login:', error); // Log para debug
+      
+      setIsLoading(false); // Finaliza o carregamento
       setError('Erro de autenticação. Email ou senha incorretos.');
-      setIsAlertOpen(true); // Exibe o pop-up em caso de erro
+      setIsAlertOpen(true);
     }
   };
 
