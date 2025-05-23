@@ -127,7 +127,7 @@ const HomeScreen: React.FC = () => {
                 Bem vindo,
               </Text>
               <Text color="white" fontSize="2xl" bold>
-                {userName}
+                Gabriel
               </Text>
             </VStack>
             <HStack>

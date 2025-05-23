@@ -22,7 +22,7 @@ const ResultadoScreen: React.FC = () => {
   const resultados: ResultadoAvaliacao[] = [
     {
       doenca: "Tártaro",
-      confiabilidade: 62,
+      confiabilidade: 76,
       //descricao: "O tártaro é uma placa bacteriana mineralizada que se forma nos dentes. Ele é áspero e poroso, o que facilita o acúmulo de mais bactérias.",
     //   recomendacoes: [
     //     "Agende uma limpeza profissional com seu dentista",
@@ -33,7 +33,7 @@ const ResultadoScreen: React.FC = () => {
     },
     {
       doenca: "Gengivite",
-      confiabilidade: 78,
+      confiabilidade: 62,
       //descricao: "A gengivite é uma inflamação das gengivas causada pelo acúmulo de placa bacteriana. Sintomas incluem gengivas vermelhas, inchadas e que sangram facilmente.",
     //   recomendacoes: [
     //     "Consulte seu dentista para avaliação e tratamento",
@@ -41,7 +41,11 @@ const ResultadoScreen: React.FC = () => {
     //     "Use fio dental corretamente",
     //     "Evite fumar, pois isso agrava a condição"
     //   ]
-    }
+    },
+    // {
+    //   doenca: "Manchas",
+    //   confiabilidade: 56,
+    // }
   ];
 
   // Função para determinar a cor da barra de progresso com base na confiabilidade
